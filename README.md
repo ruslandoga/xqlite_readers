@@ -7,7 +7,7 @@ A pool for readonly SQLite3 connections.
 ```elixir
 readers =
   for _ <- 1..:erlang.system_info(:dirty_io_schedulers) do
-    XQLite.open("test.db", [:create, :readonly, :nomutex, :wal])
+    XQLite.open("test.db", [:create, :readonly, :nomutex, :wal, :exrescode])
   end
 
 {:ok, pool} = GenServer.start_link(XQLite.Readers, readers)
